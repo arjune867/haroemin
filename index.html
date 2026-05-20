@@ -80,6 +80,15 @@
             -webkit-box-orient: vertical;  
             overflow: hidden;
         }
+
+        /* Badge animasi */
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .pulse-badge {
+            animation: pulse-badge 2s infinite;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased relative pb-24">
@@ -101,7 +110,7 @@
                 </nav>
                 
                 <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-emerald-600 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13H17M17 13V19C17 19.55 16.55 20 16 20H8C7.45 20 7 19.55 7 19V13M9 5H15"/></svg>
                     <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white transform translate-x-1 -translate-y-1">0</span>
                 </button>
             </div>
@@ -113,7 +122,7 @@
         <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-xl flex flex-col h-full transform translate-x-full transition-transform duration-300" id="cart-content">
             <div class="p-4 border-b flex justify-between items-center bg-emerald-50">
                 <h2 class="text-lg font-bold text-emerald-800 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                     Keranjang Belanja
                 </h2>
                 <button onclick="toggleCart()" class="p-2 text-gray-500 hover:text-red-500 rounded-full hover:bg-red-50 transition">
@@ -132,7 +141,7 @@
                     <span id="cart-total" class="text-xl font-bold text-emerald-700">Rp 0</span>
                 </div>
                 <button onclick="checkoutWA('cart')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-200 transition flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.6.023-1.183-1.196-2.88-2.947-3.27-4.038-.112-.29-.366-.9.155-1.6.58-.723 1.22-1.832.744-2.652-.42-.745-2.902-7.016-3.557-8.113-.47-.823-1.417-1.343-2.37-1.343-2.5 0-4.565 2.064-4.565 4.565v.045c0 3.64 3.385 7.098 6.007 9.453.609.574 3.105 2.675 7.202 3.764 1.584.464 3.331.023 4.813-1.213.818-.738 1.035-1.834.064-2.231z"/></svg>
                     Checkout via WhatsApp
                 </button>
             </div>
@@ -140,10 +149,15 @@
     </div>
 
     <main class="max-w-6xl mx-auto px-4 mt-4">
-        <div class="w-full bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 p-4 text-center mb-6">
-            <span class="text-xs text-gray-400 block mb-1">Ad Placement / Promosi External</span>
-            <div class="h-16 md:h-24 flex items-center justify-center bg-gray-200 text-gray-500 rounded">
-                [ Space Banner Iklan 728x90 ]
+        <!-- Ad Banner Top -->
+        <div class="w-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-center mb-6 shadow-md">
+            <div class="max-w-4xl mx-auto">
+                <p class="text-white text-xs mb-2 font-semibold">IKLAN SPONSOR</p>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-white/30">
+                    <h3 class="text-white font-bold text-lg mb-2">Hosting Web Terpercaya - Dapatkan Diskon 50%</h3>
+                    <p class="text-blue-100 text-sm mb-3">Domain gratis, SSL gratis, support 24/7. Mulai dari Rp 50.000/bulan</p>
+                    <button class="bg-white text-blue-600 hover:bg-blue-50 font-bold py-2 px-6 rounded-lg transition">Lihat Penawaran</button>
+                </div>
             </div>
         </div>
 
@@ -153,14 +167,16 @@
                 <!-- Slide 1 -->
                 <div class="slide absolute inset-0 w-full h-full flex items-center bg-gradient-to-r from-emerald-800 to-emerald-600 transition-opacity duration-500 opacity-100 z-10" id="slide-0">
                     <div class="px-8 md:px-16 w-full md:w-2/3 text-white">
-                        <span class="bg-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide inline-block mb-3">Promo Diskon 30%</span>
+                        <span class="bg-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide inline-block mb-3 pulse-badge">Promo Diskon 30%</span>
                         <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Sablon Kaos DTF <br/><span class="text-yellow-300">Design Suka-Suka!</span></h1>
                         <p class="mb-6 text-emerald-100">Cetak kaos satuan tanpa minimal order. Warna tajam, awet, dan nyaman dipakai.</p>
                         <button onclick="document.getElementById('produk').scrollIntoView()" class="bg-white text-emerald-700 hover:bg-gray-100 font-bold py-2 px-6 rounded-lg shadow-md transition">Pilih Desain</button>
                     </div>
                     <!-- Gambar Banner Placeholder -->
                     <div class="hidden md:block absolute right-10 bottom-0 w-1/3">
-                        <img src="https://placehold.co/400x400/10b981/ffffff?text=Ilustrasi+Kaos+1" alt="Ilustrasi Kaos" class="w-full h-auto object-cover rounded-t-xl opacity-90 shadow-2xl" loading="lazy">
+                        <div class="w-full h-96 bg-white/10 rounded-t-xl flex items-center justify-center border-2 border-white/20">
+                            <svg class="w-32 h-32 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M7 4V2m10 2v2M7 20v-2m10 2v-2M4 7H2m2 10H2m16 0h2m0-10h2M7 7h10v10H7V7z"/></svg>
+                        </div>
                     </div>
                 </div>
 
@@ -170,10 +186,12 @@
                         <span class="bg-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide inline-block mb-3">Gratis Ongkir*</span>
                         <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Kualitas Premium<br/>Harga Ramah Kantong</h2>
                         <p class="mb-6 text-gray-300 max-w-md mx-auto md:mx-0">Menggunakan tinta DTF kualitas import dan kaos cotton combed 30s reaktif yang lembut.</p>
-                        <button onclick="document.getElementById('produk').scrollIntoView()" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-2 px-6 rounded-lg shadow-md transition">Pesan Sekarang</button>
+                        <button onclick="document.getElementById('produk').scrollIntoView()" class="bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-2 px-6 rounded-lg shadow-md transition">Lihat Koleksi</button>
                     </div>
                     <div class="hidden md:block absolute right-10 bottom-0 w-1/3">
-                        <img src="https://placehold.co/400x400/065f46/ffffff?text=Ilustrasi+Kaos+2" alt="Ilustrasi Kaos 2" class="w-full h-auto object-cover rounded-t-xl opacity-90 shadow-2xl" loading="lazy">
+                        <div class="w-full h-96 bg-white/10 rounded-t-xl flex items-center justify-center border-2 border-white/20">
+                            <svg class="w-32 h-32 text-white/30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -208,7 +226,7 @@
             </div>
             <div class="bg-white p-4 rounded-xl shadow-sm text-center flex flex-col items-center gap-2 border border-emerald-50">
                 <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0l5.172 5.172m0 0l1.414-1.414a2 2 0 012.828 0L20 20M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 </div>
                 <h3 class="font-semibold text-sm">Design Bebas</h3>
             </div>
@@ -232,6 +250,18 @@
                      but I'll write the JS to output exact Tokopedia UI style -->
             </div>
         </section>
+
+        <!-- Mid-page Ad Banner -->
+        <div class="w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-4 text-center mb-12 shadow-md">
+            <div class="max-w-4xl mx-auto">
+                <p class="text-white text-xs mb-2 font-semibold">PROMOSI MENARIK</p>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-white/30">
+                    <h3 class="text-white font-bold text-lg mb-2">🎨 Ciptakan Design Unikmu!</h3>
+                    <p class="text-pink-100 text-sm mb-3">Gunakan design generator gratis kami. Ribuan template siap pakai untuk kaos custom Anda.</p>
+                    <button class="bg-white text-purple-600 hover:bg-pink-50 font-bold py-2 px-6 rounded-lg transition">Buat Design Sekarang</button>
+                </div>
+            </div>
+        </div>
 
         <section id="testimoni" class="mb-16 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-2">Apa Kata Mereka?</h2>
@@ -300,6 +330,33 @@
                 <p class="text-xs text-gray-400">Geser untuk melihat testimoni lainnya</p>
             </div>
         </section>
+
+        <!-- Section Cara Pesan -->
+        <section id="cara-pesan" class="mb-12 bg-gray-50 p-8 rounded-2xl border border-gray-200">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-10">Cara Mudah Pesan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Pilih Design</h3>
+                    <p class="text-gray-600 text-sm">Pilih dari koleksi atau upload design Anda sendiri</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Tentukan Jumlah</h3>
+                    <p class="text-gray-600 text-sm">Mulai dari 1 kaos, tanpa minimum order</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Chat Admin</h3>
+                    <p class="text-gray-600 text-sm">Hubungi via WhatsApp untuk konfirmasi harga</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Terima Pesanan</h3>
+                    <p class="text-gray-600 text-sm">Produksi cepat, pengiriman ke seluruh Indonesia</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-white border-t pb-20 md:pb-6 pt-10">
@@ -311,15 +368,19 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/6282349786916?text=Halo%20Admin,%20saya%20mau%20tanya%20soal%20sablon%20DTF." target="_blank" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-3 md:p-4 rounded-full shadow-lg shadow-emerald-300 transition-transform hover:scale-110 z-30 flex items-center justify-center">
-        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    <a href="https://wa.me/6282349786916?text=Halo%20Admin,%20saya%20mau%20tanya%20soal%20sablon%20DTF." target="_blank" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition transform hover:scale-110 z-30">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.6.023-1.183-1.196-2.88-2.947-3.27-4.038-.112-.29-.366-.9.155-1.6.58-.723 1.22-1.832.744-2.652-.42-.745-2.902-7.016-3.557-8.113-.47-.823-1.417-1.343-2.37-1.343-2.5 0-4.565 2.064-4.565 4.565v.045c0 3.64 3.385 7.098 6.007 9.453.609.574 3.105 2.675 7.202 3.764 1.584.464 3.331.023 4.813-1.213.818-.738 1.035-1.834.064-2.231z"/></svg>
     </a>
 
     <!-- Anchor Ad (Bottom Sticky) -->
     <div id="anchor-ad" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-20 flex justify-center items-center py-2 px-4 transition-transform duration-300">
-        <button onclick="closeAnchorAd()" class="absolute right-2 top-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1 text-gray-500 text-xs w-6 h-6 flex items-center justify-center">X</button>
-        <div class="w-full max-w-md h-12 md:h-16 bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center text-xs text-gray-500 rounded">
-            [ Anchor Ad 320x50 / 728x90 ]
+        <button onclick="closeAnchorAd()" class="absolute right-2 top-2 bg-gray-200 hover:bg-gray-300 rounded-full p-1 text-gray-500 text-xs w-6 h-6 flex items-center justify-center">×</button>
+        <div class="w-full max-w-md bg-gradient-to-r from-amber-400 to-orange-400 border border-orange-300 flex items-center justify-between p-3 rounded-lg">
+            <div>
+                <p class="text-xs font-bold text-orange-900">⚡ FLASH SALE</p>
+                <p class="text-sm font-bold text-orange-950">Diskon hingga 40% untuk 100 pembeli pertama!</p>
+            </div>
+            <button class="bg-white text-orange-600 hover:bg-orange-50 font-bold py-1 px-3 rounded text-xs whitespace-nowrap ml-2 transition">Pesan Sekarang</button>
         </div>
     </div>
 
@@ -327,14 +388,68 @@
     <div id="toast">Notifikasi</div>
 
     <script>
-        // Data Produk
+        // Data Produk dengan deskripsi lebih detail
         const products = [
-            { id: 1, name: "Kaos Custom DTF Kata-Kata Lucu Lengan Pendek", price: 45000, oldPrice: 65000, rating: "4.9", sold: "2rb+", image: "https://placehold.co/400x400/047857/ffffff?text=Desain+1", tag: "Diskon" },
-            { id: 2, name: "Kaos Sablon DTF Foto Sendiri Full Color A4", price: 55000, oldPrice: 75000, rating: "4.8", sold: "1.5rb+", image: "https://placehold.co/400x400/059669/ffffff?text=Desain+2", tag: "Terlaris" },
-            { id: 3, name: "Kaos Anime Custom DTF Premium Cotton 30s", price: 50000, oldPrice: 70000, rating: "5.0", sold: "800+", image: "https://placehold.co/400x400/10b981/ffffff?text=Desain+3", tag: "Baru" },
-            { id: 4, name: "Kaos Couple Custom DTF Pasangan Aesthetic", price: 48000, oldPrice: 60000, rating: "4.7", sold: "1rb+", image: "https://placehold.co/400x400/047857/ffffff?text=Desain+4", tag: "Promo" },
-            { id: 5, name: "Kaos Band Logo Custom DTF Vintage Style", price: 52000, oldPrice: 68000, rating: "4.9", sold: "3rb+", image: "https://placehold.co/400x400/059669/ffffff?text=Desain+5", tag: "Hot" },
-            { id: 6, name: "Kaos Komunitas Custom DTF Sablon Depan Belakang", price: 65000, oldPrice: 85000, rating: "4.8", sold: "500+", image: "https://placehold.co/400x400/10b981/ffffff?text=Desain+6", tag: "Diskon" }
+            { 
+                id: 1, 
+                name: "Kaos Custom DTF Kata-Kata Lucu Lengan Pendek", 
+                price: 45000, 
+                oldPrice: 65000, 
+                rating: "4.9", 
+                sold: "2rb+", 
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+                tags: ["Populer", "Design Menarik"]
+            },
+            { 
+                id: 2, 
+                name: "Kaos Sablon DTF Foto Sendiri Full Color A4", 
+                price: 55000, 
+                oldPrice: 75000, 
+                rating: "4.8", 
+                sold: "1.5rb+", 
+                image: "https://images.unsplash.com/photo-1503341455253-b2e723bb3db1?w=400&h=400&fit=crop",
+                tags: ["Best Seller", "Full Color"]
+            },
+            { 
+                id: 3, 
+                name: "Kaos Anime Custom DTF Premium Cotton 30s", 
+                price: 50000, 
+                oldPrice: 70000, 
+                rating: "5.0", 
+                sold: "800+", 
+                image: "https://images.unsplash.com/photo-1554225311-beee415c201f?w=400&h=400&fit=crop",
+                tags: ["Premium", "Anime"]
+            },
+            { 
+                id: 4, 
+                name: "Kaos Couple Custom DTF Pasangan Aesthetic", 
+                price: 48000, 
+                oldPrice: 60000, 
+                rating: "4.7", 
+                sold: "1rb+", 
+                image: "https://images.unsplash.com/photo-1552374196-1ab2ff57ebb0?w=400&h=400&fit=crop",
+                tags: ["Couple", "Romantic"]
+            },
+            { 
+                id: 5, 
+                name: "Kaos Band Logo Custom DTF Vintage Style", 
+                price: 52000, 
+                oldPrice: 68000, 
+                rating: "4.9", 
+                sold: "3rb+", 
+                image: "https://images.unsplash.com/photo-1529148482759-b649efde3579?w=400&h=400&fit=crop",
+                tags: ["Vintage", "Rock"]
+            },
+            { 
+                id: 6, 
+                name: "Kaos Komunitas Custom DTF Sablon Depan Belakang", 
+                price: 65000, 
+                oldPrice: 85000, 
+                rating: "4.8", 
+                sold: "500+", 
+                image: "https://images.unsplash.com/photo-1485968579580-b6d095ef795e?w=400&h=400&fit=crop",
+                tags: ["Komunitas", "Double Sided"]
+            }
         ];
 
         let cart = [];
@@ -354,13 +469,18 @@
                 
                 const card = `
                 <div class="bg-white rounded-xl shadow-[0_1px_6px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition relative group">
+                    <!-- Badge Tags -->
+                    <div class="absolute top-2 left-2 z-10 flex flex-col gap-1">
+                        ${p.tags.map(tag => `<span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">${tag}</span>`).join('')}
+                    </div>
+                    
                     <!-- Share Button (Absolute Top Right) -->
                     <button onclick="shareProduct('${p.name}')" class="absolute top-2 right-2 bg-white/80 backdrop-blur p-1.5 rounded-full text-gray-500 hover:text-emerald-600 shadow-sm z-10 transition">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.475 9 12c0-3.314-2.686-6-6-6S-3 8.686-3 12s2.686 6 6 6c.475 0 .938-.114 1.342-.316m0 0a6.002 6.002 0 0010.974 5.058M9 12H3m20 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </button>
                     
-                    <div class="relative w-full pt-[100%] bg-gray-50">
-                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+                    <div class="relative w-full pt-[100%] bg-gray-50 overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-300" loading="lazy">
                     </div>
                     <div class="p-3 flex flex-col flex-1">
                         <h3 class="text-sm text-gray-700 line-clamp-2 min-h-[40px] leading-tight mb-1">${p.name}</h3>
@@ -378,7 +498,7 @@
                         <div class="flex gap-2 mt-auto">
                             <button onclick="checkoutWA('direct', ${p.id})" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-xs font-bold py-1.5 rounded text-center transition">Beli</button>
                             <button onclick="addToCart(${p.id})" class="w-9 h-8 border border-emerald-500 text-emerald-600 hover:bg-emerald-50 rounded flex items-center justify-center transition">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
                             </button>
                         </div>
                     </div>
@@ -452,7 +572,7 @@
                             <div class="font-bold text-emerald-700 text-sm mt-1">${formatRp(item.price)}</div>
                             <div class="flex items-center justify-between mt-2">
                                 <div class="flex items-center border rounded">
-                                    <button onclick="changeQty(${index}, -1)" class="px-2 py-0.5 text-gray-500 hover:bg-gray-100">-</button>
+                                    <button onclick="changeQty(${index}, -1)" class="px-2 py-0.5 text-gray-500 hover:bg-gray-100">−</button>
                                     <span class="px-2 text-xs font-medium">${item.qty}</span>
                                     <button onclick="changeQty(${index}, 1)" class="px-2 py-0.5 text-gray-500 hover:bg-gray-100">+</button>
                                 </div>
@@ -482,7 +602,6 @@
             
             if (modal.classList.contains('hidden')) {
                 modal.classList.remove('hidden');
-                // Timeout to allow display block to render before sliding
                 setTimeout(() => {
                     content.classList.remove('translate-x-full');
                 }, 10);
